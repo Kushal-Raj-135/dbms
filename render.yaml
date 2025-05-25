@@ -1,0 +1,36 @@
+services:
+  # Backend Service
+  - type: web
+    name: car-rental-backend-98j4
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        value: https://car-rental-frontend-98j4.onrender.com
+
+  # Frontend Service
+  - type: web
+    name: car-rental-frontend-98j4
+    env: static
+    buildCommand: |
+      mkdir -p public
+      cp -r public/* .
+    staticPublishPath: .
+    envVars:
+      - key: API_URL
+        value: https://car-rental-backend-98j4.onrender.com/api 
