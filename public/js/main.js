@@ -1,7 +1,7 @@
 // Global variables
 const API_URL = process.env.NODE_ENV === 'production' 
   ? 'https://car-rental-backend-98j4.onrender.com/api'
-  : 'http://localhost:3002/api';
+  : 'http://localhost:3001/api';
 let currentUser = null;
 let allCars = []; // Store all cars for filtering
 
